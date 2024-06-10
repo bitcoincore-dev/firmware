@@ -1,0 +1,48 @@
+name: gnostr-docker
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # run at 2 AM UTC
+  pull_request:
+    branches:
+      - '*'
+      - '*/*'
+      - '**'
+      - 'master'
+      - 'main'
+  push:
+    branches:
+      - '*'
+      - '*/*'
+      - '**'
+      - 'master'
+      - 'main'
+
+env:
+  GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest"]
+        tag: ["3.16.0"]
+    runs-on: ${{ matrix.os }}
+    container: alpine:${{ matrix.tag }}
+
+    steps:
+      - run: |
+          apk add --no-cache bash curl git python3 py-pip musl-dev make rsync autoconf automake libtool && \
+          apk add gcc-arm-none-eabi newlib-arm-none-eabi --update-cache \
+          --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/
+
+      - name: checkout@v3 fetch-depth submodules set-safe-dir true
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+          submodules: 'true'
+          set-safe-directory: 'true'
+      - run: git config --global --add safe.directory /__w/gnostr/gnostr || true
+      - run: make repro-mk-four
+      - run: make repro-q1
