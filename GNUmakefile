@@ -64,7 +64,7 @@ endif
 export PROJECT_NAME
 
 ifeq ($(mk3-version),)
-MK3_VERSION                                 := 2023-06-19T1627-v4.1.8-coldcard.dfu
+MK3_VERSION                                 := 2023-06-26T1241-v4.1.9-coldcard.dfu
 else
 MK3_VERSION                                 := $(mk3-version)
 endif
