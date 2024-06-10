@@ -264,7 +264,7 @@ repro-mk-three: clean submodules## 	repro-mk-three
 ## https://coldcard.com/downloads/2023-06-19T1627-v4.1.8-coldcard.dfu
 	@touch releases/$(MK3_VERSION)
 	@[[ ! -f releases/$(MK3_VERSION) ]]; curl https://coldcard.com/downloads/$(MK3_VERSION) > releases/$(MK3_VERSION)
-	@cd stm32 && make -f MK3-Makefile repro
+	@cd stm32 && V=1 make -f MK3-Makefile repro
 
 repro-mk-four: clean submodules## 	repro-mk-four
 ## 	repro-mk-four
@@ -273,7 +273,7 @@ repro-mk-four: clean submodules## 	repro-mk-four
 ## https://coldcard.com/downloads/2024-05-09T1527-v5.3.1-mk4-coldcard.dfu
 	@touch releases/$(MK4_VERSION)
 	@[[ ! -f releases/$(MK4_VERSION) ]]; curl https://coldcard.com/downloads/$(MK4_VERSION) > releases/$(MK4_VERSION)
-	@cd stm32 && make -f MK4-Makefile repro
+	@cd stm32 && V=1 make -f MK4-Makefile repro
 
 repro-q-one: clean submodules## 	repro-q-one
 ## 	repro-q-one
@@ -282,7 +282,7 @@ repro-q-one: clean submodules## 	repro-q-one
 ## https://coldcard.com/downloads/2024-05-09T1529-v1.2.1Q-q1-coldcard.dfu
 	@touch releases/$(Q1_VERSION)
 	@[[ ! -f releases/$(Q1_VERSION) ]]; curl https://coldcard.com/downloads/$(Q1_VERSION) > releases/$(Q1_VERSION)
-	@cd stm32 && make -f Q1-Makefile repro
+	@cd stm32 && V=1 make -f Q1-Makefile repro
 
 .PHONY: failure
 failure:
