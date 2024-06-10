@@ -70,7 +70,7 @@ MK3_VERSION                                 := $(mk3-version)
 endif
 export MK3_VERSION
 ifeq ($(mk4-version),)
-MK4_VERSION                                 := 2023-04-07T1330-v5.1.2-mk4-coldcard.dfu
+MK4_VERSION                                 := 2024-05-09T1527-v5.3.1-mk4-coldcard.dfu
 else
 MK4_VERSION                                 := $(mk4-version)
 endif
