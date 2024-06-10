@@ -270,6 +270,7 @@ repro-mk-four: clean submodules## 	repro-mk-four
 ## 	repro-mk-four
 ## 	:additional help
 #@echo $(git describe --match "20*" --abbrev=0)
+## https://coldcard.com/downloads/2024-05-09T1527-v5.3.1-mk4-coldcard.dfu
 	@touch releases/$(MK4_VERSION)
 	@[[ ! -f releases/$(MK4_VERSION) ]]; curl https://coldcard.com/downloads/$(MK4_VERSION) > releases/$(MK4_VERSION)
 	@cd stm32 && make -f MK4-Makefile repro
@@ -278,6 +279,7 @@ repro-q-one: clean submodules## 	repro-q-one
 ## 	repro-q-one
 ## 	:additional help
 #@echo $(git describe --match "20*" --abbrev=0)
+## https://coldcard.com/downloads/2024-05-09T1529-v1.2.1Q-q1-coldcard.dfu
 	@touch releases/$(Q1_VERSION)
 	@[[ ! -f releases/$(Q1_VERSION) ]]; curl https://coldcard.com/downloads/$(Q1_VERSION) > releases/$(Q1_VERSION)
 	@cd stm32 && make -f Q1-Makefile repro
